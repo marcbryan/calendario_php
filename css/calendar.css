@@ -1,0 +1,9 @@
+table {
+  background-color: "#dedede";
+}
+
+/* Para poner los bordes a la tabla */
+table, th, td {
+ border: 1px solid black;
+ border-collapse: collapse;
+}
