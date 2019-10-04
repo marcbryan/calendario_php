@@ -9,13 +9,12 @@
     <?php
       define("MONTH_NAMES", array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"));
       $actual_month = date('m');
-      //echo "<script>console.log(".$actual_month.");</script>";
       // Le restamos 1 porque el mes que devuelve es un número entre 1 y 12 (Enero es seria 1, por lo tanto, le restamos 1)
       echo "<h2>".MONTH_NAMES[$actual_month-1]."</h2>";
      ?>
     <table id='tCalendar'>
       <?php
-        define("ROWS", 6);
+        define("ROWS", 7);
         define("COLUMNS", 7);
         define("DAY_NAMES", array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"));
         $fdm = new DateTime('first day of this month');
@@ -24,6 +23,7 @@
         $last_day = $ldm -> format('j');
         $day_number = 1;
         $print_days = FALSE;
+        $today = date("d");
         for ($i=0; $i < ROWS; $i++) {
           echo "<tr id='row".$i."'>";
           for ($j=0; $j < COLUMNS; $j++) {
@@ -36,7 +36,11 @@
                 $print_days = FALSE;
               }
               if ($print_days == TRUE) {
-                echo "<td>".$day_number."</td>";
+                if ($day_number == $today) {
+                  echo "<td class='today'>".$day_number."</td>";
+                } else {
+                  echo "<td>".$day_number."</td>";
+                }
                 $day_number += 1;
               } else {
                 echo "<td></td>";

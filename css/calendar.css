@@ -7,3 +7,15 @@ table, th, td {
  border: 1px solid black;
  border-collapse: collapse;
 }
+
+th, td {
+  width: 80px;
+  height: 20px;
+  padding: 5px;
+  text-align: center;
+}
+
+.today {
+  background-color: #ff9900;
+  font-weight: bold;
+}
